@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    //  backgroundColor: '#2c343c',
+    title: {
+        text: 'Graph 简单示例',
+        color:"#fff"
+    },
+    tooltip: {},
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quinticInOut',
+    series : [
+        {
+            type: 'graph',
+            layout: 'none',
+            // symbolSize: 50,
+            roam: true,
+            label: {
+                normal: {
+                    show: true
+                }
+            },
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [4, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 20,
+                    }
+                }
+            },
+            data: [{
+                name: '公司1',
+                value:100,
+                x: 100,
+                y: 500,
+                 label: {
+                normal: {
+                    show: true,
+                textStyle:{
+                    color:"#fcf"
+                },
+                }
+            },
+                 symbolSize: 100,
+                 itemStyle:{
+                    normal:{
+                    color:'red'
+                    }
+                }
+            }, {
+                name: '地址2',
+                value:50,
+                x: 300,
+                y: 800,
+                 label: {
+                normal: {
+                    show: true,
+                textStyle:{
+                    color:"#fff"
+                },
+                }
+            },
+                 symbolSize: 100,
+                 itemStyle:{
+                    normal:{
+                    color:'green'}
+                }
+            }, {
+                name: '联系人3',
+                value:100,
+                x: 800,
+                y: 1000,
+                 label: {
+                normal: {
+                    show: true,
+                textStyle:{
+                    color:"#000"
+                },
+                }
+            },
+                 symbolSize: 60,
+                 itemStyle:{
+                    normal:{
+                    color:'yellow'}
+                }
+            }, {
+                name: '手机4',
+                value:100,
+                x: 1100,
+                y: 900,
+                 label: {
+                normal: {
+                    show: true,
+                textStyle:{
+                    color:"brown"
+                },
+                }
+            },
+                symbolSize: 40,
+                 itemStyle:{
+                    normal:{
+                    color:'orange'
+                    }
+                }
+            }],
+            // links: [],
+            links: [{
+                source: 0,
+                target: 1,
+                symbolSize: [5, 20],
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+            //     lineStyle: {
+            //         normal: {
+            //             width: 5,
+            //             curveness: 0.2
+            //         }
+            //     }
+            // }, {
+            //     source: '华为',
+            //     target: '小米',
+            //     label: {
+            //         normal: {
+            //             show: true
+            //         }
+            //     },
+                
+                lineStyle: {
+                    normal: { curveness: 0.2 }
+                }
+            }, {
+                source: '公司1',
+                target: '联系人3'
+            }, {
+                source: '地址2',
+                target: '联系人3'
+            }, {
+                source: '联系人2',
+                target: '手机4'
+            }, {
+                source: '公司1',
+                target: '手机4'
+            }, {
+                source: '联系人3',
+                target: '手机4'
+            },{
+                source: '联系人3',
+                target: '公司1'
+            },{
+                source: '手机4',
+                target: '公司1'
+            },{
+                source: '联系人3',
+                target: '地址2'
+            },{
+                source: '手机4',
+                target: '联系人2'
+            },{
+                source: '手机4',
+                target: '联系人3'
+            },{
+                source: '地址2',
+                target: '公司1'
+            }],
+            lineStyle: {
+                normal: {
+                    opacity: 0.9,
+                    width: 2,
+                    curveness: 0.5
+                }
+            }
+        }
+    ]
+};
+if (option && typeof option === "object") {
+    // myChart.setOption(option, true);
+
+
+myChart.setOption(option, true);
+    window.addEventListener("resize",function(){
+    myChart.resize();
+});
+
+
+
+}
+       </script>
+   </body>
+</html>
